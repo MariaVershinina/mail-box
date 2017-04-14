@@ -1,8 +1,5 @@
  ## Приложение "Почтовый ящик" (или gmail-clone)
-В приложении зарегистрировано 3 пользователя.
-5. Вывод письма полностью
-6. Фильтр непрочитанных сообщений
-7. Возможность удаления письма 
+В приложении зарегистрировано 3 пользователя:
 1.Email: Ivanov@mail.ru Password: vanya
 2.Email: Petrov@mail.ru  Password: petya
 3.Email: Vasin@mail.ru    Password: vasya
