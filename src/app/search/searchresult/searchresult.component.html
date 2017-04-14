@@ -1,0 +1,21 @@
+ <div class="inbox col-sm-10">
+  <ul class="list-unstyled">
+    <li class="email-item row unread" *ngFor = "let search of searchlist | search:word">
+      <div class="people col-sm-3">
+        <span class="people-names">
+          {{search.author.name}} --> 
+          {{search.sendTo.name}} 
+        </span>
+      </div><!-- people -->
+      <div class="message col-sm-7">
+        <div class="clipper">
+          <h3> {{search.title}} </h3>
+          <p> {{search.text}} </p>
+      </div>
+      </div><!-- message -->
+      <div class="date col-sm-2">
+        {{search.sentAt | date}}
+      </div><!-- date -->
+    </li>
+  </ul>
+</div>

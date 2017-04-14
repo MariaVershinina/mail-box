@@ -1,0 +1,18 @@
+<li class="email-item row  " (click)="onSelect(mailbox)" [class.isRead]="isUnRead" [hidden]="invisible && !isUnRead">
+  <div class="people col-sm-2">
+    <b>
+      {{mailbox.user.name}} {{mailbox.user.surname}}
+      <span *ngIf ="isUnRead">({{currentUnRead}})</span>
+    </b>
+  </div><!-- people -->
+  <div class="lastmessage col-sm-8">
+    <div class="clipper">
+      <p><b>{{mailbox.lastMessage.title}}</b>   
+      {{mailbox.lastMessage.text}}</p>
+   </div>
+  </div><!-- lastmessage -->
+  <div class="date col-sm-2">
+      <b>{{mailbox.lastMessage.sentAt | date}}</b>
+  </div><!-- date -->
+</li>
+<li *ngIf="!mailbox">У вас нет сообщений</li>

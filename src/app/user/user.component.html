@@ -1,0 +1,45 @@
+ <div class="container-fluid">
+    <header class="row">
+      <div class="logo col-sm-8">
+        <a routerLink="/">
+          <img src="public/img/google.png" alt="Google">
+        </a>
+      </div><!-- logo -->
+      <!--<div class="search-bar col-sm-6">
+        <app-search> </app-search>
+      </div>-->
+      <!-- search-bar -->
+      <div class="profile col-sm-4">
+        <ul class="profile-icons list-inline pull-right">
+          <li>Вы зашли как {{user.name}} {{user.surname}}</li>        
+          <li (click)="showDialog = !showDialog"><a>Выйти</a> </li>
+          <app-modal [(visible)]="showDialog">
+            <p>Вы действительно хотите выйти?</p>
+              <button (click)="showDialog = !showDialog;logOut()" class=" btn btn-primary">Да</button>
+              <button (click)="showDialog = !showDialog" class="btn  btn-primary ">Нет</button>
+          </app-modal>
+          </ul>
+      </div><!-- profile -->
+    </header>
+ <div class="control-bar row">
+    <div class="menu col-sm-2">Gmail<span class="caret"></span>
+    </div>
+</div>
+
+<div class="mail row">
+  <div class="sidebar col-sm-2">
+      <button class="compose btn btn-danger" (click)="createMessage()">
+          Написать
+      </button>
+      <ul class="inbox-sections list-unstyled">
+        <app-inbox></app-inbox>
+        <li class="active"> 
+          <a routerLink = "/contacts">Контакты</a>
+        </li>
+        <li>Отправленные</li>
+        <li>Spam</li>
+      </ul>
+  </div><!-- sidebar -->
+<router-outlet>   </router-outlet>
+</div><!-- mail -->
+</div>

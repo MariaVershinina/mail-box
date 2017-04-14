@@ -1,0 +1,31 @@
+<div class="controls col-sm-8">
+          <ul class="control-list list-inline">
+            <li>
+              <button class="text-btn btn btn-default" (click)="deleteMessage($event)">
+                <strong>Удалить</strong>
+                <span class="caret"></span>
+              </button>
+            </li>
+          </ul>
+</div> 
+<div *ngIf = "letter"  class="inbox col-sm-10">
+    <ul class="list-unstyled">
+      <li class="email-item row unread">
+        <div class="people col-sm-2">
+            <span class="people-names">
+              от {{letter.author.name}} к
+              {{letter.sendTo.name}} 
+            </span>
+        </div><!-- people -->
+        <div class="message col-sm-8">
+          <h3> {{letter.title}}</h3>
+            <br><p>{{letter.text}}</p>
+        </div><!-- message -->
+        <div class="date col-sm-2">
+                {{letter.sentAt | date}}
+                <!--<date class="pull-right">11:27 a.m.</date>-->
+        </div><!-- date -->       
+      </li>
+    </ul>
+    <p><a href (click)="back()">Назад</a></p>
+</div>

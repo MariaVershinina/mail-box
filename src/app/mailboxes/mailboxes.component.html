@@ -1,0 +1,24 @@
+<div class="controls col-sm-8">
+  <ul class="control-list list-inline">
+    <li>
+      <button class="text-btn btn btn-default" [disabled]= "invisible" (click)="showUnread()">
+        <strong>Показать непрочитанные</strong>
+        <span class="caret"></span>
+      </button>
+    </li>
+    <li>
+      <button class="text-btn btn btn-default" [disabled]= "!invisible" (click)="showAll()">
+        <strong>Отобразить все</strong>
+        <span class="caret"></span>
+      </button>
+    </li>
+  </ul>
+</div> 
+<div class="inbox col-sm-10">
+      <ul class="list-unstyled">
+        <app-mailbox  *ngFor = "let mailbox of mailboxes" 
+                      [mailbox]="mailbox"  [invisible]="invisible">
+        </app-mailbox>
+        <li *ngIf="!mailboxes.length">У вас нет сообщений</li>
+      </ul>
+</div>

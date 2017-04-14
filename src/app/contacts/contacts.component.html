@@ -1,0 +1,121 @@
+<div class="controls col-sm-8">
+  <ul class="control-list list-inline">
+    <li>
+      <button class="text-btn btn btn-default" (click)="addForm($event)">
+        <strong>Добавить</strong>
+        <span class="caret"></span>
+      </button>
+    </li>
+    </ul>
+</div> 
+
+ <div class="inbox col-sm-10" >
+  <ul class="list-unstyled">
+    <!--Добавление ящика-->
+    <li class="email-item row unread" *ngIf="showForm" >
+      <div [hidden]="!message" class="alert alert-danger">
+        Пользователь уже существует
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group col-sm-12"  >
+        	<label for="email">Email</label>  
+            <input lass="form-control" id="email" name="email" placeholder="example@domain.com"
+                        [(ngModel)]="currentUser.email"  #email="ngModel" 
+                        required pattern="[a-zA-Z_0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
+        </div>
+        <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+            	Некорректный email
+        </div>
+      </div>
+      <div class="message col-sm-3">
+        <div class="form-group col-sm-12">
+          <label for="name"> Name </label>
+            <input class="form-control" id="name" name="name"   
+                         placeholder="Name" value="" [(ngModel)]="currentUser.name">
+        </div>
+      </div>
+      <div class="message col-sm-3">
+        <div class="form-group col-sm-12">
+          <label for="surname"> Surname </label>
+            <input class="form-control" id="surname" name="surname"   
+                    placeholder="Surname" value="" [(ngModel)]="currentUser.surname">
+        </div>
+      </div>
+      <div class="message col-sm-1">
+        <div class="form-group col-sm-12">
+          <label for="email"> </label>
+        	<button  class="btn btn-default" 
+                   [disabled]="email.invalid"
+                   (click)="addUser($event)"> Добавить
+			    </button>
+        </div>
+      </div>
+      <div class="message col-sm-1">
+        <div class="form-group col-sm-12">
+          <label for="email">  </label>
+        	  <button  class="btn btn-default" 
+              (click)="cancel($event)"> Отменить
+			    </button>
+        </div>
+      </div>
+   </li>  
+<!--Добавление ящика-->
+
+<!--Изменение ящика-->
+        <li class="email-item row unread"  *ngIf="canChange" >
+          <div [hidden]="!hasChanged" class="alert alert-danger">
+             Вы изменили свои данные. Теперь пользователи видят вас как  {{changingUser.name}}  {{changingUser.surname}} 
+          </div>        
+          <div class="col-sm-3">
+            <div class="form-group col-sm-12">
+                <label for="email">Email</label>  
+                <input  id="email" name="email" [value] = "[changingUser.email]" disabled>
+            </div>
+          </div>
+          <div class="message col-sm-3">
+            <div class="form-group col-sm-12">
+                <label for="name"> Name </label>
+                <input class="form-control" id="name" name="name"   
+                       placeholder="Name" [ngModel]="changingUser.name" #name="ngModel" >
+            </div>
+          </div>
+          <div class="message col-sm-3">
+            <div class="form-group col-sm-12">
+        	      <label for="surname"> Surname </label>
+                <input class="form-control" id="surname" name="surname"   
+                       placeholder="Surname" [ngModel]="changingUser.surname" #surname="ngModel">
+            </div>
+          </div>
+          <div class="message col-sm-1">
+            <div class="form-group col-sm-12">
+                <label for="email">  </label>
+        	      <button  class="btn btn-default" [disabled]="surname.pristine && name.pristine " (click)="changeUser(name.value, surname.value)"> 
+                    Изменить
+			          </button>
+            </div>
+          </div>
+          <div class="message col-sm-1">
+            <div class="form-group col-sm-12">
+                <label for="email">  </label>
+        	      <button class="btn btn-default" (click)="cancel($event)"> 
+                    Отменить
+			          </button>
+            </div>
+          </div>
+         </li>  
+<!--Изменение ящика-->
+
+  <div [hidden]="messageAdd == false" class="alert alert-danger">
+             Пользователь добавлен
+  </div>
+  <app-contact *ngFor = "let user of users "  
+                      [user]="user"
+                      (onCheck)="createArray($event)"
+                      (onChangeUser)="changeUserData($event)">
+                      
+  </app-contact>
+</ul>
+</div>
+
+
+       

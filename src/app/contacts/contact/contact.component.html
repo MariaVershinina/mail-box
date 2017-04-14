@@ -1,0 +1,19 @@
+<li class="email-item row unread" >
+  <div class="col-sm-4">
+    <span>{{user.email}} </span>
+  </div>
+  <div class="col-sm-3">
+    <p>{{user.name}}</p>
+  </div>
+  <div class="col-sm-3">
+    <p>{{user.surname}}</p>
+  </div>
+  <div class="message col-sm-1">
+    <div class="form-group col-sm-12" >
+       <button class="btn btn-default" [disabled]="user.email !== currentUser"
+          (click)="changeUser($event)"> Изменить
+		  </button>
+    </div>
+  </div>
+</li>
+
