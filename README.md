@@ -1,4 +1,4 @@
-   Приложение "Почтовый ящик" (или gmail-clone)
+ ## Приложение "Почтовый ящик" (или gmail-clone)
 В приложении зарегистрировано 3 пользователя.
 																					Email: Ivanov@mail.ru Password: vanya
 																					Email: Petrov@mail.ru  Password: petya
